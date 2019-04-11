@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { HobbitsesPage } from '../pages/hobbitses/hobbitses';
+import { BasicPage } from '../pages/modals-basic/modals-basic';
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,7 +24,9 @@ export class MyApp {
     this.initializeApp();
     
     this.pages = [
-      {title: 'HomeZbraa', component: HomePage}
+      {title: 'HomeZbraa', component: HomePage},
+      {title: 'My Hobbitses', component: HobbitsesPage},
+      {title: 'All Hobbitses', component: BasicPage}
     ];
     
   }
