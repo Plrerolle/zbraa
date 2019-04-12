@@ -7,12 +7,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HobbitsesService {
-  url: 'http://localhost:3000';
+  public url: "http://localhost:3000/users";
 
 
   constructor(private http: HttpClient) { }
 
   getHome(): Observable<any> {
-    return this.http.get('http://localhost:3000');
+    return this.http.get("http://localhost:3000/users");
   }
 }

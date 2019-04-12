@@ -16,9 +16,11 @@
         <ion-button (click)="displayContent()">
             Show hobbitses
         </ion-button>
-        <p *ngIf="results">
-            {{results.info}}
-        </p>
+        <ion-item *ngFor="let result of results">
+            <p *ngIf="result">
+                {{result.info}}
+            </p>
+        </ion-item>
     </ion-list>
 
 
