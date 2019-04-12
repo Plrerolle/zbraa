@@ -34,6 +34,7 @@ export class HobbitsesPage {
 
   async openModal(characterNum)
   {
+    console.log('Entry: ', characterNum);
     const modal = await this.modalCtrl.create({
      component: HobbitModalPage,
      componentProps: characterNum

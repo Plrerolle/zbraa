@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Hey Friend
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()" slot="end">
+        <!--<span ion-text color="primary" showWhen="ios">Cancel</span>
+      <ion-icon name="md-close" showWhen="android, windows"></ion-icon>-->
+        Fuck Off !
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <h2>{{friend.name}}</h2>
+      <h3>{{friend.firstname}}</h3>
+      <p>{{friend.info}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
