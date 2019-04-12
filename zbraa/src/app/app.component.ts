@@ -19,11 +19,6 @@ export class AppComponent {
       title: 'Friends',
       url: '/list',
       icon: 'beer'
-    },
-    {
-      title: 'Hobbits',
-      url: '/hobbitses',
-      icon: 'beer'
     }
   ];
 
