@@ -13,6 +13,14 @@
         <ion-item *ngFor="let item of items" (click)="openModal({charNum: item.charNum})">
             {{item.title}}
         </ion-item>
+        <ion-button (click)="displayContent()">
+            Show hobbitses
+        </ion-button>
+        <p *ngIf="results">
+            {{results.info}}
+        </p>
     </ion-list>
+
+
 
 </ion-content>
