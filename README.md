@@ -7,6 +7,6 @@ Small app to have fun with friends
 - [x] Node API with postgreSQL
 - [x] Ionic app serves API
 - [x] Page that displays users info
-- [ ] Page to create new user
+- [x] Page to create new user
 
 

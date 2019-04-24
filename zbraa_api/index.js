@@ -17,6 +17,8 @@ app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 })
 
+app.post('/users', db.postUser)
+
 app.get('/users', db.getUsers)
 
 app.listen(port, () => {
