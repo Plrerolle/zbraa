@@ -16,6 +16,17 @@ const getUsers = (request, response) => {
     })
 }
 
+const postUser = (request, response) => {
+    const {name, firstname, info} = request.body;
+    pool.query('INSERT INTO users (name, firstname, info) VALUES ($1, $2, $3);', [name, firstname, info], (error, results) => {
+        if (error) {
+            throw error;
+        }
+        response.status(201).send(`User added with ID: ${results.insertId}`)
+    })
+}
+
 module.exports = {
-    getUsers
+    getUsers,
+    postUser
 }
