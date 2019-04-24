@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HobbitModalPage } from './hobbit-modal.page';
+import { FriendModalPage } from './friend-modal.page';
 
-describe('HobbitModalPage', () => {
-  let component: HobbitModalPage;
-  let fixture: ComponentFixture<HobbitModalPage>;
+describe('FriendModalPage', () => {
+  let component: FriendModalPage;
+  let fixture: ComponentFixture<FriendModalPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HobbitModalPage ],
+      declarations: [ FriendModalPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HobbitModalPage);
+    fixture = TestBed.createComponent(FriendModalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

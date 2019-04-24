@@ -15,8 +15,7 @@ const routes: Routes = [
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
-  { path: 'hobbit-modal', loadChildren: './hobbit-modal/hobbit-modal.module#HobbitModalPageModule' },
-  { path: 'hobbitses', loadChildren: './hobbitses/hobbitses.module#HobbitsesPageModule' }
+  { path: 'friend-modal', loadChildren: './friend-modal/friend-modal.module#FriendModalPageModule' }
 ];
 
 @NgModule({

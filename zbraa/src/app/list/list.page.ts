@@ -1,39 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FriendModalPage } from '../friend-modal/friend-modal.page'
+import { HobbitsesService } from '../services/hobbitses.service';
+import { ModalController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
   styleUrls: ['list.page.scss']
 })
-export class ListPage implements OnInit {
-  private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+export class ListPage {
+  results: null;
+  constructor(
+    private modalCtrl: ModalController,
+    private hobbitses: HobbitsesService) {
+    this.displayContent();
   }
 
-  ngOnInit() {
+  async openModal(friend) {
+    const modal = await this.modalCtrl.create({
+      component: FriendModalPage,
+      componentProps: friend
+    });
+    return await modal.present();
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+
+  displayContent() {
+    this.hobbitses.getHome().subscribe(data => {
+      this.results = data
+    });
+  }
 }

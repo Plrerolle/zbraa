@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      This friend
+    </ion-title>
+    <ion-button round (click)="dismiss()" slot="end" color="danger">
+      Fuck Off !
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{friend.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h3>{{friend.firstname}} </h3>
+      <p>{{friend.info}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
