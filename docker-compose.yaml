@@ -1,5 +1,17 @@
-version: "3"
+version: "2"
 services: 
+  db:
+    build: 
+      context: ./zbraa_api
+      dockerfile: Dockerfile-db
+    user: postgres
+    ports: 
+      - 2345:5432
+    container_name: zbraa-db
+    volumes_from: 
+      - zbraa-alpine:rw
+    environment:
+      POSTGRES_PASSWORD: "P13rr3 l0u15"
   zbraa-api:
     build: 
       context: ./zbraa_api
@@ -10,3 +22,21 @@ services:
       - "3452:3000"
     volumes: 
       - ./zbraa_api:/usr/src/app
+    links:
+      - db
+    environment:
+      POSTGRES_PASSWORD: "P13rr3 l0u15"
+      POSTGRES_USER: 'me'
+      POSTGRES_DB: 'zbraa'
+  zbraa-alpine:
+    image: alpine
+    volumes:
+      - db_data
+    container_name: pg-database
+volumes: 
+  db_data:  
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/pilou/postgres'

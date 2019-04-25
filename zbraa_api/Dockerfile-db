@@ -1,0 +1,7 @@
+FROM postgres:latest
+
+RUN chmod -R 777 /etc/passwd /var/lib/postgresql/data
+RUN useradd -b /root -u 1000 -g 0 pilou
+RUN chmod -R 1000 /var/lib/postgresql/data && \
+    chgrp -R 0 /var/lib/postgresql/data && \
+    chmod -R g+rwX /var/lib/postgresql/data
