@@ -1,0 +1,12 @@
+version: "3"
+services: 
+  zbraa-api:
+    build: 
+      context: ./zbraa_api
+      dockerfile: Dockerfile
+    image: zbraa-node:latest
+    container_name: zbraa-api
+    ports: 
+      - "3452:3000"
+    volumes: 
+      - ./zbraa_api:/usr/src/app
