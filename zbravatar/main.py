@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from random import random
 import seaborn as sns
+import sys
 
 def generate_zbravatar_pattern():
     rd_half_zbravatar = np.random.randint(2, size=(7, 4))
@@ -17,4 +18,8 @@ def generate_zbravatar(i):
 
 
 if __name__ == "__main__":
-    generate_zbravatar(2)
+    if len(sys.argv) >= 1:
+        i = sys.argv[1]
+    else:
+        i = 0
+    generate_zbravatar(i)
