@@ -1,9 +1,9 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
-    user: 'pilou',
-    host: 'localhost',
+    user: 'plrerolle',
+    host: '35.192.103.167',
     database: 'zbraa',
-    password: 'P13rr3 l0u15',
+    password: 'H4b4r1 y4k0 mzur1',
     port: 5432
 })
 
@@ -35,7 +35,7 @@ const genZbravatar = (request, response) => {
     let runPy = new Promise(function(success, nosuccess) {
 
         const { spawn } = require('child_process');
-        const pyprog = spawn('/home/pilou/miniconda3/envs/zbravatar/bin/python', ['/home/pilou/ChNeuf/zbraa/zbravatar/main.py', id, zbra_path]);
+        const pyprog = spawn('/home/plrerolle/anaconda3/envs/zbravatar/bin/python', ['/home/plrerolle/zbraa/zbravatar/main.py', id, zbra_path]);
     
         pyprog.stdout.on('data', function(data) {
     
