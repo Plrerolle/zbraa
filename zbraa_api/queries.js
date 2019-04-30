@@ -1,10 +1,11 @@
-const Pool = require('pg').Pool
+const Pool = require('pg').Pool;
+const spawn = require("child_process").spawn;
 const pool = new Pool({
     user: 'pilou',
     host: 'localhost',
     database: 'zbraa',
     password: 'P13rr3 l0u15',
-    port: 5432
+    port: 5432  
 })
 
 const getUsers = (request, response) => {
@@ -27,7 +28,23 @@ const postUser = (request, response) => {
     })
 }
 
+const genZbravatar = (request, response) => {
+    console.log("Zbravatar is generating");
+    const {id, zbra_path} = request.body;
+    spawn('sh ../zbravatar/zbravatar.sh $1 $2', [id, zbra_path],
+        (error, stdout, stderr) => {
+            console.log(stdout);
+            console.log(stderr);
+            if (error !== null) {
+                console.log(`exec error: ${error}`);
+            }
+            response.status(201)
+        });
+
+}
+
 module.exports = {
     getUsers,
-    postUser
+    postUser,
+    genZbravatar
 }

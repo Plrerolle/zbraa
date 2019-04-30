@@ -21,6 +21,8 @@ app.post('/users', db.postUser)
 
 app.get('/users', db.getUsers)
 
+app.post('/zbravatar', db.genZbravatar)
+
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
 })
