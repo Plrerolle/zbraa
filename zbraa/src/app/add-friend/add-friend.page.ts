@@ -19,6 +19,7 @@ export class AddFriendPage {
     this.createService.createUser(this.userData).subscribe(data => {
       this.results = data
     });
+
   }
 
 }

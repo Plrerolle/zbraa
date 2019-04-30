@@ -12,4 +12,8 @@ export class UserCreateService {
   createUser(postData): Observable<any> {
     return this.http.post("http://35.228.123.213:3000/users", postData)
   }
+
+  createZbravatar(zbravatarData): Observable<any> {
+    return this.http.post("http://35.228.123.213:3000/zbravatar", zbravatarData)
+  }
 }

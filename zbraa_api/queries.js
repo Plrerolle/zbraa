@@ -19,11 +19,11 @@ const getUsers = (request, response) => {
 const postUser = (request, response) => {
     console.log("Posting user !");
     const { name, firstname, info } = request.body;
-    pool.query('INSERT INTO users (name, firstname, info) VALUES ($1, $2, $3);', [name, firstname, info], (error, results) => {
+    pool.query('INSERT INTO users (name, firstname, info) VALUES ($1, $2, $3) RETURNING *;', [name, firstname, info], (error, results) => {
         if (error) {
             throw error;
         }
-        response.status(201).json(request.body)
+        response.status(201).json(results.rows[0])
     })
 }
 
