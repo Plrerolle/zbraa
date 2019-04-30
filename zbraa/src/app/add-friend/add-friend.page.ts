@@ -18,11 +18,15 @@ export class AddFriendPage {
   createUser() {
     console.log(this.userData);
     this.createService.createUser(this.userData).subscribe(data => {
-      this.results = data
+      if (data !== null) {
+        this.results = data
+        this.createService.createZbravatar({id: this.results === null ? 0 : this.results.id, zbra_path: '/home/plrerolle/zbraa/zbraa/src/assets/imgs/'}).subscribe(data => {
+        this.zbravatarResults = data
+      });
+      }
+      
     });
-    this.createService.createZbravatar({id: this.results.id, zbra_path: '/home/plrerolle/zbraa/zbraa/src/assets/imgs/'}).subscribe(data => {
-      this.zbravatarResults = data
-    });
+    
     console.log(this.zbravatarResults);
 
   }
