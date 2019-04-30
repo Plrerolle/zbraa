@@ -13,6 +13,6 @@ export class HobbitsesService {
   constructor(private http: HttpClient) { }
 
   getHome(): Observable<any> {
-    return this.http.get("http://localhost:3000/users");
+    return this.http.get("http://35.228.123.213:3000/users");
   }
 }

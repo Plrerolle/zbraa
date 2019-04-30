@@ -10,6 +10,6 @@ export class UserCreateService {
   constructor(private http: HttpClient) { }
 
   createUser(postData): Observable<any> {
-    return this.http.post("http://localhost:3000/users", postData)
+    return this.http.post("http://35.228.123.213:3000/users", postData)
   }
 }
