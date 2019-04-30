@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 set -e
 
 shift $((OPTIND-1))
@@ -16,4 +16,5 @@ else
 fi
 
 
-source activate zbravatar && python main.py id zbra_path
+source activate zbravatar && python /home/pilou/ChNeuf/zbraa/zbravatar/main.py ${id} ${zbra_path}
+echo "done"

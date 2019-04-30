@@ -16,7 +16,7 @@ def generate_zbravatar(i, zbraa_path):
     plt.imshow(zbravatar_pattern, cmap=sns.cubehelix_palette(rot=-random(), as_cmap=True, gamma=2))
     plt.axis('off')
     plt.savefig(os.path.join(zbraa_path, 'zbravatar_{}.png'.format(i)))
-
+    print(os.path.join(zbraa_path, 'zbravatar_{}.png'.format(i)))
 
 if __name__ == "__main__":
     if len(sys.argv) >= 2:
@@ -26,3 +26,4 @@ if __name__ == "__main__":
         i = 0
         zbravatar_path = '../zbraa/src/assets/imgs/'
     generate_zbravatar(i, zbravatar_path)
+

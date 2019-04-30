@@ -1,11 +1,10 @@
 const Pool = require('pg').Pool;
-const spawn = require("child_process").spawn;
 const pool = new Pool({
     user: 'pilou',
     host: 'localhost',
     database: 'zbraa',
     password: 'P13rr3 l0u15',
-    port: 5432  
+    port: 5432
 })
 
 const getUsers = (request, response) => {
@@ -19,7 +18,7 @@ const getUsers = (request, response) => {
 
 const postUser = (request, response) => {
     console.log("Posting user !");
-    const {name, firstname, info} = request.body;
+    const { name, firstname, info } = request.body;
     pool.query('INSERT INTO users (name, firstname, info) VALUES ($1, $2, $3);', [name, firstname, info], (error, results) => {
         if (error) {
             throw error;
@@ -28,18 +27,31 @@ const postUser = (request, response) => {
     })
 }
 
+
 const genZbravatar = (request, response) => {
     console.log("Zbravatar is generating");
-    const {id, zbra_path} = request.body;
-    spawn('sh ../zbravatar/zbravatar.sh $1 $2', [id, zbra_path],
-        (error, stdout, stderr) => {
-            console.log(stdout);
-            console.log(stderr);
-            if (error !== null) {
-                console.log(`exec error: ${error}`);
-            }
-            response.status(201)
+    const { id, zbra_path } = request.body;
+    console.log({ id, zbra_path });
+    let runPy = new Promise(function(success, nosuccess) {
+
+        const { spawn } = require('child_process');
+        const pyprog = spawn('/home/pilou/miniconda3/envs/zbravatar/bin/python', ['/home/pilou/ChNeuf/zbraa/zbravatar/main.py', id, zbra_path]);
+    
+        pyprog.stdout.on('data', function(data) {
+    
+            success(data);
         });
+    
+        pyprog.stderr.on('data', (data) => {
+    
+            nosuccess(data);
+        });
+    });
+
+    runPy.then(function(fromRunpy) {
+        console.log(fromRunpy.toString());
+        response.status(201).end(fromRunpy);
+    });
 
 }
 
